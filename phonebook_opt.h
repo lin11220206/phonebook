@@ -20,12 +20,13 @@ struct __PHONE_BOOK_DETAIL {
 
 typedef struct __PHONE_BOOK_ENTRY {
     char lastName[MAX_LAST_NAME_SIZE];
-    bool color;
+    int color;
     struct __PHONE_BOOK_ENTRY *pLeft, *pRight;
+	struct __PHONE_BOOK_ENTRY *parent;
     struct __PHONE_BOOK_DETAIL *detail;
 } entry;
 
-entry *findName(char lastname[], entry *pHead);
+entry *findName(char lastName[], entry *pHead);
 entry *append(char lastName[], entry *root);
 
 
