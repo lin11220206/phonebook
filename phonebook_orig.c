@@ -19,13 +19,12 @@ entry *findName(char lastname[], entry *pHead)
 entry *append(char lastName[], entry *e)
 {
     /* allocate memory for the new entry and put lastName */
-	if(e == NULL)
-		e = (entry *) malloc(sizeof(entry));	
-	else
-	{
-	    e->pNext = (entry *) malloc(sizeof(entry));
-    	e = e->pNext;
-	}
+    if(e == NULL)
+        e = (entry *) malloc(sizeof(entry));
+    else {
+        e->pNext = (entry *) malloc(sizeof(entry));
+        e = e->pNext;
+    }
     strcpy(e->lastName, lastName);
     e->pNext = NULL;
 
@@ -33,6 +32,6 @@ entry *append(char lastName[], entry *e)
 }
 
 entry *traceRoot(entry *e)
-{	
-	return e;
+{
+    return e;
 }
