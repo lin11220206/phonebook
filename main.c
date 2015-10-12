@@ -40,38 +40,35 @@ int main(int argc, char *argv[])
     entry *pHead, *e;
     pHead = NULL;
     printf("size of entry : %lu bytes\n", sizeof(entry));
-
+	e = pHead;
 #if defined(__GNUC__)
     __builtin___clear_cache((char *) pHead, (char *) pHead + sizeof(entry));
 #endif
     clock_gettime(CLOCK_REALTIME, &start);
+	int k = 0;
     while (fgets(line, sizeof(line), fp)) {
         while (line[i] != '\0')
             i++;
         line[i - 1] = '\0';
         i = 0;
-        pHead = append(line, pHead);
-		pHead = traceRoot(pHead);
+        e = append(line, e);
+		e = traceRoot(e);
+		if(k == 0 ) pHead = e;
+		k++;
     }
-    printf("%s %d\n", pHead->lastName, pHead->color);
-    printf("%s %d\n", pHead->pRight->lastName, pHead->pRight->color);
-    printf("%s %d\n", pHead->pLeft->lastName, pHead->pLeft->color);
-	printf("%s %d\n", pHead->pRight->pRight->lastName, pHead->pRight->pRight->color);
-	printf("%s %d\n", pHead->pRight->pLeft->lastName, pHead->pRight->pLeft->color);
-	printf("%s %d\n", pHead->pRight->pRight->pRight->lastName, pHead->pRight->pRight->pRight->color);
     clock_gettime(CLOCK_REALTIME, &end);
     cpu_time1 = diff_in_second(start, end);
     /* close file as soon as possible */
     fclose(fp);
-
     e = pHead;
 
     /* the givn last name to find */
-    char input[MAX_LAST_NAME_SIZE] = "aaaaaa";
+    char input[MAX_LAST_NAME_SIZE] = "zyxel";
     e = pHead;
+	e = traceRoot(e);
     assert(findName(input, e) &&
            "Did you implement findName() in " IMPL "?");
-    assert(0 == strcmp(findName(input, e)->lastName, "aaaaaa"));
+    assert(0 == strcmp(findName(input, e)->lastName, "zyxel"));
 
 #if defined(__GNUC__)
     __builtin___clear_cache((char *) pHead, (char *) pHead + sizeof(entry));
