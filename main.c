@@ -51,11 +51,14 @@ int main(int argc, char *argv[])
         line[i - 1] = '\0';
         i = 0;
         pHead = append(line, pHead);
+		pHead = traceRoot(pHead);
     }
-    pHead = traceRoot(pHead);
-    printf("%s\n", pHead->lastName);
-    printf("%s\n", pHead->pRight->lastName);
-    printf("%s\n", pHead->pLeft->lastName);
+    printf("%s %d\n", pHead->lastName, pHead->color);
+    printf("%s %d\n", pHead->pRight->lastName, pHead->pRight->color);
+    printf("%s %d\n", pHead->pLeft->lastName, pHead->pLeft->color);
+	printf("%s %d\n", pHead->pRight->pRight->lastName, pHead->pRight->pRight->color);
+	printf("%s %d\n", pHead->pRight->pLeft->lastName, pHead->pRight->pLeft->color);
+	printf("%s %d\n", pHead->pRight->pRight->pRight->lastName, pHead->pRight->pRight->pRight->color);
     clock_gettime(CLOCK_REALTIME, &end);
     cpu_time1 = diff_in_second(start, end);
     /* close file as soon as possible */

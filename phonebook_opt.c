@@ -70,6 +70,11 @@ void check(entry *node)
 {
     entry *father, *grandfather, *uncle;
     int cmp1, cmp2;
+	if(node->parent == NULL)
+	{
+		node->color = BLACK;
+		return;
+	}
     father = node->parent;
 
     if(father->color == BLACK)
@@ -133,8 +138,10 @@ void left_rotate(entry *e)
             e->parent = pivot->parent;
         }
     }
+	e->parent = pivot->parent;
     pivot->parent = e;
     e->pLeft = pivot;
+	
 }
 void right_rotate(entry *e)
 {
@@ -153,16 +160,21 @@ void right_rotate(entry *e)
             e->parent = pivot->parent;
         }
     }
+	e->parent = pivot->parent;
     pivot->parent = e;
     e->pRight = pivot;
 }
 
 entry *traceRoot(entry *node)
-{
-    if(node->parent != NULL)
-        node = node->parent;
+{	
+	entry *root = node;
+    while(root->parent != NULL)
+	{
+        root = root->parent;
+		printf("GG\n");
+	}
 
-    return node;
+    return root;
 }
 
 
