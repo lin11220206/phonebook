@@ -22,12 +22,15 @@ typedef struct __PHONE_BOOK_ENTRY {
     char lastName[MAX_LAST_NAME_SIZE];
     int color;
     struct __PHONE_BOOK_ENTRY *pLeft, *pRight;
-	struct __PHONE_BOOK_ENTRY *parent;
+    struct __PHONE_BOOK_ENTRY *parent;
     struct __PHONE_BOOK_DETAIL *detail;
 } entry;
 
 entry *findName(char lastName[], entry *pHead);
 entry *append(char lastName[], entry *root);
-
+void check(entry *node);
+void left_rotate(entry *e);
+void right_rotate(entry *e);
+entry *traceRoot(entry *node);
 
 #endif
