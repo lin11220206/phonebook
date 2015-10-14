@@ -27,11 +27,6 @@ entry *append(char lastName[], entry *e)
     }
     strcpy(e->lastName, lastName);
     e->pNext = NULL;
-
     return e;
 }
 
-entry *traceRoot(entry *e)
-{
-    return e;
-}

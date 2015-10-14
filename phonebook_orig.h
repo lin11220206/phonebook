@@ -19,8 +19,7 @@ typedef struct __PHONE_BOOK_ENTRY {
 } entry;
 
 entry *findName(char lastname[], entry *pHead);
-entry *append(char lastName[], entry *e);
-entry *traceRoot(entry *e);
+entry *append(char lastName[], entry *pHead);
 
 
 #endif

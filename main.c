@@ -45,27 +45,25 @@ int main(int argc, char *argv[])
     __builtin___clear_cache((char *) pHead, (char *) pHead + sizeof(entry));
 #endif
     clock_gettime(CLOCK_REALTIME, &start);
-    int k = 0;
+    int count = 0;
     while (fgets(line, sizeof(line), fp)) {
         while (line[i] != '\0')
             i++;
         line[i - 1] = '\0';
         i = 0;
         e = append(line, e);
-        e = traceRoot(e);
-        if(k == 0 ) pHead = e;
-        k++;
+        if(count == 0)
+            pHead = e;
+        count++;
     }
     clock_gettime(CLOCK_REALTIME, &end);
     cpu_time1 = diff_in_second(start, end);
     /* close file as soon as possible */
     fclose(fp);
-    e = pHead;
 
     /* the givn last name to find */
     char input[MAX_LAST_NAME_SIZE] = "zyxel";
     e = pHead;
-    e = traceRoot(e);
     assert(findName(input, e) &&
            "Did you implement findName() in " IMPL "?");
     assert(0 == strcmp(findName(input, e)->lastName, "zyxel"));

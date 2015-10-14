@@ -7,6 +7,7 @@
 entry *findName(char lastName[], entry *pHead)
 {
     /* TODO: implement */
+    pHead = traceRoot(pHead);
     entry *pNode = pHead;
     while (pNode != NULL) {
         int k = strcasecmp(lastName, pNode->lastName);
@@ -63,6 +64,7 @@ entry *append(char lastName[], entry *root)
     e->pLeft = e->pRight = NULL;
     e->color = RED;
     check(e);
+    root = traceRoot(root);
     return root;
 }
 
@@ -172,20 +174,3 @@ entry *traceRoot(entry *node)
 
     return root;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
